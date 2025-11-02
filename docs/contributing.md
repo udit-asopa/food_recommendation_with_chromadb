@@ -36,7 +36,7 @@ Thank you for your interest in contributing to the Food Recommendation System! T
 
 ```bash
 # 1. Fork and clone the repository
-git clone https://github.com/your-username/food_recommendation_with_chromadb.git
+git clone https://github.com/udit-asopa/food_recommendation_with_chromadb.git
 cd food_recommendation_with_chromadb
 
 # 2. Set up development environment
