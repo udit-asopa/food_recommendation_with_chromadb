@@ -399,41 +399,38 @@ Provide a friendly recommendation that mentions 2-3 specific foods and explains 
 
 #### **5.1 Interactive Search Interface**
 ```python
-# interactive_search.py
-import sys
-from typing import List, Dict
+# Example implementation pattern for interactive search
+# Based on scripts/exercise_scripts/ex_interactive_search.py
 
-class InteractiveFoodSearch:
-    """
-    Interactive CLI interface for food recommendations.
-    """
+def interactive_food_chatbot(collection: chromadb.Collection) -> None:
+    """Interactive CLI chatbot for food recommendations."""
+    search_history = []
     
-    def __init__(self, vector_engine: VectorSearchEngine, llm_generator: LLMResponseGenerator):
-        """
-        Initialize the interactive search interface.
-        
-        Args:
-            vector_engine: Vector search engine instance
-            llm_generator: LLM response generator instance
-        """
-        self.vector_engine = vector_engine
-        self.llm_generator = llm_generator
-        self.search_history = []
-        self.collection = None
+    while True:
+        try:
+            user_input = input("\n🔍 Search: ").strip()
+            
+            if user_input.lower() in ['quit', 'exit', 'q']:
+                break
+            elif user_input.lower() == 'help':
+                show_help_menu()
+            else:
+                search_food(collection, user_input)
+                search_history.append(user_input)
     
-    def setup(self, food_data: List[Dict]):
-        """
-        Setup the search system with food data.
-        
-        Args:
-            food_data: List of food item dictionaries
-        """
-        # Create and populate collection
-        self.collection = self.vector_engine.create_collection(
-            "interactive_food_search",
-            {'description': 'Interactive food search collection'}
-        )
-        self.vector_engine.populate_collection(self.collection, food_data)
+def search_food(collection: chromadb.Collection, query: str) -> None:
+    """Handle food similarity search with enhanced display."""
+    results = perform_similarity_search(collection, query, 5)
+    
+    if not results:
+        print("❌ No matching foods found.")
+        return
+    
+    print(f"\n✅ Found {len(results)} recommendations:")
+    for i, result in enumerate(results, 1):
+        score = result['similarity_score'] * 100
+        print(f"{i}. 🍽️ {result['food_name']}")
+        print(f"   📊 Match: {score:.1f}% | 🏷️ {result['cuisine_type']}")
     
     def start_interactive_session(self):
         """Start the interactive CLI session."""

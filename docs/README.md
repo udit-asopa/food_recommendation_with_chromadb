@@ -1,4 +1,14 @@
-# Food Recommendation System - Complete Documentation
+# Food Recomme### 🛠️ Development & Setup
+- [**Development Setup**](development-setup.md) - Environment configuration
+- [**Contributing Guidelines**](contributing.md) - How to contribute to the project
+- [**API Documentation**](api-documentation.md) - Complete function reference
+- [**Troubleshooting**](troubleshooting.md) - Common issues and solutions
+
+### 📚 Exercises & Learning
+- [**Exercise Scripts Guide**](../scripts/exercise_scripts/README.md) - Learning objectives and detailed explanations
+
+### 🔮 Future Development
+- [**Future Work & Roadmap**](future-work.md) - Planned enhancements and research opportunitiesn System - Complete Documentation
 
 Welcome to the comprehensive documentation for the **Food Recommendation System with ChromaDB**. This project demonstrates advanced vector search and conversational AI techniques for food recommendations.
 
@@ -6,35 +16,18 @@ Welcome to the comprehensive documentation for the **Food Recommendation System 
 
 ### 🏗️ System Architecture
 - [**Architecture Overview**](architecture.md) - System design and component interactions
-- [**Technical Stack**](tech-stack.md) - Detailed technology choices and rationale
-- [**Data Flow**](data-flow.md) - How data moves through the system
+- [**Implementation Guide**](implementation.md) - Step-by-step development process
 
 ### 🎯 Use Cases & Applications  
 - [**Use Cases**](use-cases.md) - Real-world applications and scenarios
 - [**Sample Queries**](sample-queries.md) - Example searches and expected results
-- [**Comparison Studies**](comparison-studies.md) - Performance vs other approaches
 
-### 🔧 Implementation Details
-- [**Implementation Guide**](implementation.md) - Step-by-step development process
-- [**ChromaDB Integration**](chromadb-integration.md) - Vector database setup and usage
-- [**RAG System Design**](rag-system.md) - Retrieval-Augmented Generation implementation
-- [**LLM Integration**](llm-integration.md) - Hugging Face FLAN-T5 usage
-
-### 🧪 Exercises & Learning
-- [**Exercise Overview**](exercises.md) - Learning objectives and progression
-- [**Interactive Search Tutorial**](interactive-search-tutorial.md) - CLI interface development
-- [**RAG Chatbot Tutorial**](rag-chatbot-tutorial.md) - Conversational AI implementation
-
-### 🛠️ Development & Deployment
+### �️ Development & Setup
 - [**Development Setup**](development-setup.md) - Environment configuration
-- [**API Documentation**](api-documentation.md) - Function and class references
-- [**Performance Optimization**](performance-optimization.md) - Speed and efficiency tips
-- [**Troubleshooting**](troubleshooting.md) - Common issues and solutions
-
-### 🤝 Contributing & Community
 - [**Contributing Guidelines**](contributing.md) - How to contribute to the project
-- [**Code Style Guide**](code-style.md) - Coding standards and best practices
-- [**Testing Guide**](testing.md) - Unit and integration testing
+
+### 📚 Exercises & Learning
+- [**Exercise Scripts Guide**](../scripts/exercise_scripts/README.md) - Learning objectives and detailed explanations
 
 ## 🚀 Quick Navigation
 
@@ -69,14 +62,32 @@ graph TD
 
 | Section | Files | Status |
 |---------|-------|---------|
-| Architecture | 3 | ✅ Complete |
-| Use Cases | 3 | ✅ Complete |
-| Implementation | 4 | ✅ Complete |
-| Tutorials | 3 | ✅ Complete |
+| Architecture | 2 | ✅ Complete |
+| Use Cases | 2 | ✅ Complete |
 | Development | 4 | ✅ Complete |
-| **Total** | **17** | **✅ Complete** |
+| Exercises | 1 | ✅ Complete |
+| Future Work | 1 | ✅ Complete |
+| **Total** | **10** | **✅ Complete** |
 
-## 🔗 External Resources
+## � Future Work & Roadmap
+
+### 📋 **Planned Enhancements**
+- **API Documentation** - Comprehensive function reference
+- **Performance Optimization Guide** - Speed and memory improvements  
+- **Testing Framework** - Unit and integration testing setup
+- **Advanced Tutorials** - Multi-modal search, personalization
+- **Troubleshooting Guide** - Common issues and solutions
+
+### 🚀 **Potential Extensions**
+- **Web Interface** - Browser-based UI for wider accessibility
+- **Mobile API** - REST endpoints for mobile app integration
+- **Advanced RAG** - Multi-modal search with images
+- **Personalization** - User preference learning and adaptation
+- **Performance Monitoring** - Real-time metrics and analytics
+
+See [Future Work](future-work.md) for detailed roadmap and contribution opportunities.
+
+## �🔗 External Resources
 
 - [ChromaDB Documentation](https://docs.trychroma.com/)
 - [Hugging Face Transformers](https://huggingface.co/docs/transformers)
@@ -85,6 +96,6 @@ graph TD
 
 ---
 
-📝 **Last Updated**: $(date)  
+📝 **Last Updated**: December 2024  
 🚀 **Version**: 1.0.0  
 👥 **Maintained by**: Food Recommendation Team
