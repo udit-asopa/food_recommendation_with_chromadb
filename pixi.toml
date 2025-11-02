@@ -1,0 +1,10 @@
+[workspace]
+authors = ["udit-asopa <udit.asopa@gmail.com>"]
+channels = ["conda-forge"]
+name = "food_recommendation_with_chromadb"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
