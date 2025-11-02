@@ -1,18 +1,19 @@
 from shared_functions import *
-from typing import List, Dict, Any
-from transformers import pipeline
+from typing import List, Dict, Any, Optional, Union
+from transformers import pipeline, Pipeline
 import json
+import chromadb
 
 # For simplicity and reliability, use direct Transformers pipeline
 # This avoids LangChain version compatibility issues
 print("🔧 Using direct Transformers pipeline for maximum compatibility")
 
 # Global variables
-food_items = []
+food_items: List[Dict[str, Any]] = []
 
 # Hugging Face LLM Configuration
-model_id = 'google/flan-t5-base'  # CPU-friendly alternative to IBM Granite
-generation_params = {
+model_id: str = 'google/flan-t5-base'  # CPU-friendly alternative to IBM Granite
+generation_params: Dict[str, Union[int, float, bool]] = {
     "max_length": 400,
     "temperature": 0.7,
     "do_sample": True,
@@ -29,8 +30,16 @@ llm_pipeline = pipeline(
 )
 
 # Simple function to call the model
-def generate_text(prompt):
-    """Generate text using the FLAN-T5 model"""
+def generate_text(prompt: str) -> str:
+    """
+    Generate text using the FLAN-T5 model.
+    
+    Args:
+        prompt: Input text prompt for generation
+        
+    Returns:
+        Generated text response
+    """
     try:
         result = llm_pipeline(prompt, **generation_params)
         if isinstance(result, list) and len(result) > 0:
@@ -42,8 +51,8 @@ def generate_text(prompt):
 
 print("✅ Model ready for text generation")
 
-def main():
-    """Main function for enhanced RAG chatbot system"""
+def main() -> None:
+    """Main function for enhanced RAG chatbot system."""
     try:
         print("🤖 Enhanced RAG-Powered Food Recommendation Chatbot")
         print("   Powered by Hugging Face FLAN-T5 & ChromaDB")
@@ -79,7 +88,7 @@ def main():
 
 
 
-def generate_llm_rag_response(query: str, search_results: List[Dict]) -> str:
+def generate_llm_rag_response(query: str, search_results: List[Dict[str, Any]]) -> str:
     """Generate response using FLAN-T5 with retrieved context"""
     if not search_results:
         return "I couldn't find any food items matching your request. Try describing what you're in the mood for with different words!"
@@ -125,8 +134,8 @@ def generate_fallback_response(query: str, search_results: List[Dict]) -> str:
     
     return " ".join(response_parts)
 
-def enhanced_rag_food_chatbot(collection):
-    """Enhanced RAG-powered conversational food chatbot with Hugging Face FLAN-T5"""
+def enhanced_rag_food_chatbot(collection: chromadb.Collection) -> None:
+    """Enhanced RAG-powered conversational food chatbot with Hugging Face FLAN-T5."""
     print("\n" + "="*70)
     print("🤖 ENHANCED RAG FOOD RECOMMENDATION CHATBOT")
     print("   Powered by Hugging Face FLAN-T5 Model")
@@ -179,8 +188,8 @@ def enhanced_rag_food_chatbot(collection):
         except Exception as e:
             print(f"❌ Bot: Sorry, I encountered an error: {e}")
 
-def handle_enhanced_rag_query(collection, query: str, conversation_history: List[str]):
-    """Handle user query with enhanced RAG approach using Hugging Face FLAN-T5"""
+def handle_enhanced_rag_query(collection: chromadb.Collection, query: str, conversation_history: List[str]) -> None:
+    """Handle user query with enhanced RAG approach using Hugging Face FLAN-T5."""
     print(f"\n🔍 Searching vector database for: '{query}'...")
     
     # Perform similarity search with more results for better context
@@ -208,8 +217,8 @@ def handle_enhanced_rag_query(collection, query: str, conversation_history: List
         if i < 3:
             print()
 
-def handle_enhanced_comparison_mode(collection):
-    """Enhanced comparison between two food queries using LLM"""
+def handle_enhanced_comparison_mode(collection: chromadb.Collection) -> None:
+    """Enhanced comparison between two food queries using LLM."""
     print("\n🔄 ENHANCED COMPARISON MODE")
     print("   Powered by AI Analysis")
     print("-" * 35)
@@ -244,7 +253,7 @@ def handle_enhanced_comparison_mode(collection):
         right = f"{results2[i]['food_name']} ({results2[i]['similarity_score']*100:.0f}%)" if i < len(results2) else "---"
         print(f"{left[:30]:<30} | {right[:30]}")
 
-def generate_llm_comparison(query1: str, query2: str, results1: List[Dict], results2: List[Dict]) -> str:
+def generate_llm_comparison(query1: str, query2: str, results1: List[Dict[str, Any]], results2: List[Dict[str, Any]]) -> str:
     """Generate AI-powered comparison between two queries"""
     # Simple fallback if no results
     if not results1 and not results2:
@@ -271,8 +280,8 @@ def generate_llm_comparison(query1: str, query2: str, results1: List[Dict], resu
 
 
 
-def show_enhanced_rag_help():
-    """Display help information for enhanced RAG chatbot"""
+def show_enhanced_rag_help() -> None:
+    """Display help information for enhanced RAG chatbot."""
     print("\n📖 ENHANCED RAG CHATBOT HELP")
     print("=" * 45)
     print("🧠 This chatbot uses Hugging Face FLAN-T5 to understand your")

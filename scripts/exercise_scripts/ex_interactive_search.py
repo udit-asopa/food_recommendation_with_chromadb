@@ -1,14 +1,17 @@
 import sys
 import os
+from typing import List, Dict, Any
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from shared_functions import *
+import chromadb
 
-# Global variable to store loaded food items
-food_items = []
+# Global variables to store loaded food items and search history
+food_items: List[Dict[str, Any]] = []
+search_history: List[str] = []
 search_history = []
 
-def main():
-    """Main function for interactive CLI food recommendation system"""
+def main() -> None:
+    """Main function for interactive CLI food recommendation system."""
     try:
         print("🍽️  Interactive Food Recommendation System")
         print("=" * 50)
@@ -32,8 +35,8 @@ def main():
         
     except Exception as error:
         print(f"❌ Error initializing system: {error}")
-def interactive_food_chatbot(collection):
-    """Interactive CLI chatbot for food recommendations"""
+def interactive_food_chatbot(collection: chromadb.Collection) -> None:
+    """Interactive CLI chatbot for food recommendations."""
     print("\n" + "="*50)
     print("🤖 INTERACTIVE FOOD SEARCH CHATBOT")
     print("="*50)
@@ -76,8 +79,8 @@ def interactive_food_chatbot(collection):
             break
         except Exception as e:
             print(f"❌ Error processing request: {e}")
-def show_help_menu():
-    """Display help information for users"""
+def show_help_menu() -> None:
+    """Display help information for users."""
     print("\n📖 HELP MENU")
     print("-" * 30)
     print("Search Examples:")
@@ -128,8 +131,8 @@ def handle_food_search(collection, query):
     
     # Provide suggestions for further exploration
     suggest_related_searches(results)
-def suggest_related_searches(results):
-    """Suggest related searches based on current results"""
+def suggest_related_searches(results: List[Dict[str, Any]]) -> None:
+    """Suggest related searches based on current results."""
     if not results:
         return
     

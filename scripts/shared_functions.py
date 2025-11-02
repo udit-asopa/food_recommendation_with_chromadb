@@ -17,10 +17,10 @@ Last Updated: $(date)
 """
 
 import json
+import os
+from typing import List, Dict, Any, Optional, Union
 import chromadb
 from sentence_transformers import SentenceTransformer
-from typing import List, Dict, Any, Optional
-import os
 
 # Global embedding model instance for consistency across the application
 _embedding_model = None
